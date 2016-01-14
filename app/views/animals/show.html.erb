@@ -1,0 +1,16 @@
+<h1>Please meet your animal <%= @animal.name %></h1>
+
+<ul>
+  <li>Species: <%= @animal.species %></li>
+  <li>Owner: <%= @animal.owner %></li>
+</ul>
+
+<% if @animal.shelter %>
+  <p><%= link_to "Adopt #{ @animal.name }", shelter_animal_adopt_path(@animal.shelter, @animal) %></p>
+<% elsif @animal.client %>
+  <p><%= link_to "Donate #{ @animal.name }", animal_donate_path(@animal) %></p>
+<% end %>
+
+<img src="<%= @animal.photo %>" height="380px">
+
+<p><%= link_to "Give #{ @animal.name } a new toy", new_animal_toy_path(@animal) %></p>

@@ -1,0 +1,7 @@
+<h2>Adopt <%= @animal.name %> </h2>
+
+<%= form_for([@shelter, @animal], url: { action: 'complete_adoption' }, html: { method: 'put' }) do |f| %>
+
+  <p>Client to adopt <%= @animal.name %>: <%= f.collection_select(:client, Client.where(:shelte @shelter), :id, :name)  %></p>
+  <p><%= f.submit %></p>
+<% end %>
